@@ -32,6 +32,21 @@ public_users.post("/register", (req,res) => {
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
     res.send(JSON.stringify(books,null,2));
+
+    /*    
+    let bookList = new Promise((resolve,reject) => {
+        if (books) {
+            resolve(books)
+        } else {
+            reject({error: 'No Book Library was found'})
+        }
+    });
+
+    bookList.then((successMessage) => {
+        res.send(successMessage);
+      })
+    */ 
+        
 });
 
 // Get book details based on ISBN
@@ -40,11 +55,26 @@ public_users.get('/isbn/:isbn',function (req, res) {
     let booksList=Object.values(books)
     let book = booksList.find(b => b.isbn===isbn);
    
-      if (book) {
+    if (book) {
        let bookDetails = JSON.stringify(book);
        res.send(`Book details for ISBN ${isbn}: ${bookDetails}`);
      } else {
-       res.send(`No book found with ISBN ${isbn}`);}
+       res.send(`No book found with ISBN ${isbn}`);
+     }
+
+     /*    
+    let bookByISBN = new Promise((resolve,reject) => {
+        if (books[isbn]) {
+            resolve(books)
+        } else {
+            reject({error: 'No Book found for this ISBN'})
+        }
+    });
+
+    bookByISBN.then((successMessage) => {
+        res.send(successMessage);
+      })
+    */ 
  });
   
 // Get book details based on author
@@ -57,7 +87,22 @@ public_users.get('/author/:author',function (req, res) {
        let bookDetails = JSON.stringify(book);
        res.send(`Book details for author ${author}: ${bookDetails}`);
      } else {
-       res.send(`No book found for author ${author}`);}
+       res.send(`No book found for author ${author}`);
+     }
+
+     /*    
+    let bookByAuthor = new Promise((resolve,reject) => {
+        if (books[author]) {
+            resolve(books)
+        } else {
+            reject({error: 'No Book found for this author'})
+        }
+    });
+
+    bookByAuthor.then((successMessage) => {
+        res.send(successMessage);
+      })
+    */ 
 });
 
 // Get all books based on title
@@ -70,7 +115,22 @@ public_users.get('/title/:title',function (req, res) {
        let bookDetails = JSON.stringify(book);
        res.send(`Book details for title ${title}: ${bookDetails}`);
      } else {
-       res.send(`No book found with title ${title}`);}
+       res.send(`No book found with title ${title}`);
+    }
+
+     /*    
+    let bookByTitle = new Promise((resolve,reject) => {
+        if (books[title]) {
+            resolve(books)
+        } else {
+            reject({error: 'No Book found with this title'})
+        }
+    });
+
+    bookByTitle.then((successMessage) => {
+        res.send(successMessage);
+      })
+    */ 
 });
 
 //  Get book review
