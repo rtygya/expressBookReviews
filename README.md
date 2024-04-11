@@ -6,3 +6,5 @@ After completing this lab, you will be able to:
 1. Create APIs and perform CRUD operations on an Express server using Session & JWT authentication.
 2. Use Async/Await or Promises with Axios in Node.js.
 3. Create REST API endpoints and test them using Postman.
+
+Done as part of IBM Full Stack Developer Certification course on Coursera
